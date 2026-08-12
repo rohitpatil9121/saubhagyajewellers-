@@ -72,7 +72,9 @@ button,input,textarea{font:inherit;color:inherit}
  /* Same reason: the karkhana steps are dimmed to .28 and lit one at a time by the
     sticky scrollytell. Unpinned, every step must be readable. */
  [data-step]{opacity:1 !important}
- [data-craft-media] img+img{display:none}
+ /* Do not hide the 2nd-4th craft images here: the step triggers still drive the
+    cross-fade, so hiding them leaves every image at opacity 0 as soon as the
+    active step is not the first one, and the media well renders empty. */
  /* A portrait crop puts the bride's jewellery right under the caption, and the
     desktop scrim is too shallow to hold the text off it. Deepen the fade. */
  [data-panel]>div{padding-top:clamp(56px,14vw,96px) !important;background:linear-gradient(0deg,rgba(var(--scrim),.95) 0%,rgba(var(--scrim),.88) 42%,rgba(var(--scrim),.6) 72%,rgba(var(--scrim),0) 100%) !important}

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saubhagya Jewellers — Fine Jewellery, Jaipur</title>
+<meta name="description" content="Saubhagya Jewellers, Jaipur. Kundan, polki and 22-carat gold set by hand. Private viewings by appointment in Jaipur, Mumbai and Hyderabad.">
+<meta property="og:title" content="Saubhagya Jewellers — Fine Jewellery, Jaipur">
+<meta property="og:description" content="Kundan, polki and 22-carat gold, set by hand in our Jaipur workshop.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+:root{--obsidian:#151010;--gold:#C9A227;--champagne:#E8D9A0;--ivory:#F3EFE6;--muted:rgba(243,239,230,.55);--hair:rgba(201,162,39,.28);--scrim:21,16,16;--well:#1C1513;--faint:rgba(243,239,230,.35);--sel:rgba(201,162,39,.12);--sheen:rgba(232,217,160,.42);--ease:cubic-bezier(0.16,1,0.3,1)}
+:root[data-mode="light"]{--obsidian:#EFDCD2;--gold:#8A6A14;--champagne:#6F5410;--ivory:#16130E;--muted:rgba(22,19,14,.62);--hair:rgba(138,106,20,.32);--scrim:239,220,210;--well:#E3C9BC;--faint:rgba(22,19,14,.42);--sel:rgba(138,106,20,.12);--sheen:rgba(255,255,255,.55)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--obsidian);color:var(--ivory);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;transition:background-color .6s var(--ease),color .6s var(--ease)}
+img{display:block;max-width:100%}
+a{color:var(--ivory);text-decoration:none}
+a:hover{color:var(--champagne)}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+::selection{background:var(--gold);color:var(--obsidian)}
+[data-link]{position:relative;display:inline-block}
+[data-link]::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--champagne);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+[data-link]:hover::after,[data-link]:focus-visible::after{transform:scaleX(1)}
+@keyframes sweep{0%{transform:translate3d(-120%,0,0) rotate(8deg);opacity:0}12%{opacity:.85}40%{transform:translate3d(140%,0,0) rotate(8deg);opacity:0}100%{transform:translate3d(140%,0,0) rotate(8deg);opacity:0}}
+[data-menu-toggle]{display:none}
+@media (max-width:1150px){ [data-cta-link]{display:none !important} }
+[data-mobile-nav]{opacity:0;pointer-events:none;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s var(--ease)}
+[data-mobile-nav][data-open="1"]{opacity:1;pointer-events:auto;visibility:visible}
+[data-skip]{position:absolute;left:16px;top:-60px;z-index:99;padding:12px 18px;background:var(--obsidian);border:1px solid var(--gold);color:var(--champagne);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:top .3s var(--ease)}
+[data-skip]:focus{top:16px}
+@media (max-width:900px){
+ [data-nav]{display:none !important}
+ [data-menu-toggle]{display:flex !important}
+ [data-progress]{display:none !important}
+ [data-two]{grid-template-columns:1fr !important}
+ [data-track]{flex-direction:column !important;width:auto !important;height:auto !important}
+ [data-panel]{width:100% !important;height:auto !important;min-height:78svh}
+ [data-craft-media]{position:relative !important;height:62svh !important;top:auto !important}
+ [data-sticky]{position:relative !important;top:auto !important;height:auto !important}
+ [data-nav]{display:none !important}
+ [data-scrub-stage]{grid-template-columns:1fr !important;position:static !important;min-height:0 !important}
+ [data-scrub-section]{height:auto !important;padding-top:clamp(60px,10vh,120px) !important;padding-bottom:clamp(60px,10vh,120px) !important}
+ [data-collections]{height:auto !important}
+ [data-coll-sticky]{position:static !important;height:auto !important;display:block !important;overflow:visible !important}
+}
+@media (prefers-reduced-motion:reduce){
+ *{animation:none !important;transition-duration:.01ms !important}
+}
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;background:var(--obsidian)">
+
+<a data-skip="1" href="#main">Skip to content</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:clamp(12px,2vw,36px);padding:18px clamp(18px,4vw,56px);background:linear-gradient(180deg,rgba(var(--scrim),.92),rgba(var(--scrim),0))">
+  <a href="#hero" style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.4vw,19px);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;flex:0 0 auto;color:var(--ivory)">Saubhagya Jewellers</a>
+  <nav data-nav="1" aria-label="Primary" style="display:flex;gap:clamp(18px,3vw,44px);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">
+    <a data-link="1" data-nav-link="collections" href="#collections">Collections</a>
+    <a data-link="1" data-nav-link="craft" href="#craft">Craftsmanship</a>
+    <a data-link="1" data-nav-link="materials" href="#materials">Materials</a>
+    <a data-link="1" data-nav-link="appointment" href="#appointment">Appointment</a>
+  </nav>
+  <a data-link="1" data-cta-link="1" href="#appointment" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;color:var(--champagne)">Book a viewing</a>
+  <button type="button" data-mode-toggle="1" aria-pressed="false" style="display:flex;flex:0 0 auto;align-items:center;gap:10px;min-height:44px;padding:10px 16px;white-space:nowrap;background:transparent;border:1px solid var(--hair);color:var(--ivory);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:border-color .5s var(--ease),color .5s var(--ease)">
+    <span aria-hidden="true" data-mode-dot="1" style="width:12px;height:12px;border-radius:50%;background:var(--gold);transition:background-color .5s var(--ease)"></span>
+    <span data-mode-label="1">Light</span>
+  </button>
+  <button type="button" data-menu-toggle="1" aria-expanded="false" aria-controls="mobile-nav" style="align-items:center;flex:0 0 auto;gap:10px;padding:10px 14px;min-height:44px;white-space:nowrap;background:transparent;border:1px solid var(--hair);color:var(--ivory);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer">Menu</button>
+</header>
+
+<nav id="mobile-nav" data-mobile-nav="1" aria-label="Mobile" style="position:fixed;inset:0;z-index:70;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;padding:0 clamp(24px,8vw,64px);background:var(--obsidian)">
+  <a data-mobile-link="1" href="#collections" style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,9vw,52px);font-weight:300;line-height:1">Collections</a>
+  <a data-mobile-link="1" href="#craft" style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,9vw,52px);font-weight:300;line-height:1">Craftsmanship</a>
+  <a data-mobile-link="1" href="#materials" style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,9vw,52px);font-weight:300;line-height:1">Materials</a>
+  <a data-mobile-link="1" href="#appointment" style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,9vw,52px);font-weight:300;line-height:1;color:var(--champagne)">Appointment</a>
+  <button type="button" data-menu-close="1" style="margin-top:20px;min-height:44px;padding:12px 20px;background:transparent;border:1px solid var(--hair);color:var(--muted);font-size:12px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer">Close</button>
+</nav>
+
+<main id="main">
+
+<section id="hero" aria-label="Introduction" style="position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;padding:clamp(96px,14vh,160px) clamp(18px,4vw,56px) 40px">
+  <div data-parallax-scene="1" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(28px,5vh,56px)">
+    <p data-hero-eyebrow="1" style="margin:0;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Sonar of Johari Bazaar — Est. 1934</p>
+
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,9vw,132px);line-height:.98;letter-spacing:-.01em;color:var(--ivory)">
+      <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-hero-word="1" style="display:inline-block;margin-right:.22em">Worn</span><span data-hero-word="1" style="display:inline-block;margin-right:.22em">for</span><span data-hero-word="1" style="display:inline-block">generations</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-hero-word="1" style="display:inline-block"><em style="font-style:italic;color:var(--champagne)">not&nbsp;seasons</em></span></span>
+    </h1>
+
+    <figure data-parallax="0.03" style="position:relative;margin:0;width:min(560px,84vw);aspect-ratio:4/3;overflow:hidden">
+      <img data-hero-img="1" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A hand-set gold necklace with ruby beads, photographed on a dark ground" style="width:100%;height:100%;object-fit:cover">
+      <span aria-hidden="true" style="position:absolute;inset:-20% -40%;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,0) 42%,var(--sheen) 50%,rgba(255,255,255,0) 58%);animation:sweep 6s var(--ease) infinite;will-change:transform"></span>
+    </figure>
+
+    <p data-hero-sub="1" style="margin:0;max-width:46ch;color:var(--muted)">Kundan, polki and 22-carat gold, set by hand in our Jaipur workshop. Fewer than four hundred pieces leave the karkhana each year.</p>
+  </div>
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid var(--hair);padding-top:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">
+    <span>Scroll to enter</span>
+    <span>Jaipur · Mumbai · Hyderabad</span>
+  </div>
+</section>
+
+<section id="reveal" aria-label="The jadau earring, examined" data-scrub-section="1" style="position:relative;height:250svh;padding:0 clamp(18px,4vw,56px);border-top:1px solid var(--hair)">
+  <div data-scrub-stage="1" style="position:sticky;top:0;width:100%;max-width:1400px;margin:0 auto;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,90px);align-items:center;align-content:center;padding:clamp(70px,12vh,140px) 0">
+    <figure style="position:relative;margin:0;aspect-ratio:1/1;overflow:hidden;background:var(--well)">
+      <img data-scrub-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A pair of ornate gold earrings set with stones, photographed against dark grey" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08)">
+    </figure>
+    <div style="position:relative;min-height:clamp(220px,34vh,300px)">
+      <p style="margin:0 0 28px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Karanphool Jadau — 22ct</p>
+      <div style="position:relative">
+        <div data-caption="1" style="opacity:1">
+          <h2 style="margin:0 0 14px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.2vw,58px);line-height:1.08">The stones are chosen first</h2>
+          <p style="margin:0;max-width:40ch;color:var(--muted)">Uncut polki is bought by weight in Jaipur and sorted for a single earring over several sittings. Only stones that match in tone and depth go forward.</p>
+        </div>
+        <div data-caption="1" style="position:absolute;inset:0;opacity:0">
+          <h2 style="margin:0 0 14px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.2vw,58px);line-height:1.08">The gold is laid before the stone</h2>
+          <p style="margin:0;max-width:40ch;color:var(--muted)">Pure 24-carat kundan foil is worked cold around each stone, layer over layer, until the setting holds without heat or claw.</p>
+        </div>
+        <div data-caption="1" style="position:absolute;inset:0;opacity:0">
+          <h2 style="margin:0 0 14px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.2vw,58px);line-height:1.08">Nine weeks at the karkhana</h2>
+          <p style="margin:0;max-width:40ch;color:var(--muted)">Meenakari on the reverse alone takes eleven days. The piece is stamped, numbered and entered in the family bahi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="collections" aria-label="Collections" data-collections="1" style="position:relative;height:300svh;border-top:1px solid var(--hair)">
+  <div data-coll-sticky="1" style="position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:clamp(48px,8vh,90px) clamp(18px,4vw,56px) clamp(24px,4vh,44px)">
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,5vw,72px);line-height:1">Three collections</h2>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div data-progress="1" style="position:relative;width:clamp(80px,14vw,200px);height:1px;background:var(--hair)">
+        <span data-progress-bar="1" aria-hidden="true" style="position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;will-change:transform"></span>
+      </div>
+      <p data-coll-index="1" aria-live="polite" style="margin:0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">01 — 03</p>
+    </div>
+  </div>
+  <div data-track="1" style="display:flex;width:max-content;height:70svh;gap:0;will-change:transform">
+    <article data-panel="1" style="position:relative;width:88vw;height:100%;overflow:hidden;border-left:1px solid var(--hair)">
+      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="A bride wearing traditional Indian gold jewellery and a necklace set" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
+      <div style="position:absolute;inset:auto 0 0 0;padding:clamp(22px,4vw,48px);background:linear-gradient(0deg,rgba(var(--scrim),.88),rgba(var(--scrim),0))">
+        <p style="margin:0 0 8px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">01 — Vivaha</p>
+        <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1">The bridal set, whole</h3>
+        <p style="margin:0;max-width:44ch;color:var(--muted)">Rani haar, choker, maang tikka and chooda, made as one commission for one wedding.</p>
+      </div>
+    </article>
+    <article data-panel="1" style="position:relative;width:88vw;height:100%;overflow:hidden;border-left:1px solid var(--hair)">
+      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="A woman wearing an ornate gold headpiece and traditional jewellery" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
+      <div style="position:absolute;inset:auto 0 0 0;padding:clamp(22px,4vw,48px);background:linear-gradient(0deg,rgba(var(--scrim),.88),rgba(var(--scrim),0))">
+        <p style="margin:0 0 8px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">02 — Virasat</p>
+        <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1">Temple work, redrawn</h3>
+        <p style="margin:0;max-width:44ch;color:var(--muted)">Nakashi and temple pieces traced from the 1934–1961 shop books and made again at their first proportions.</p>
+      </div>
+    </article>
+    <article data-panel="1" style="position:relative;width:88vw;height:100%;overflow:hidden;border-left:1px solid var(--hair)">
+      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="A woman in a green sari wearing everyday gold jewellery" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
+      <div style="position:absolute;inset:auto 0 0 0;padding:clamp(22px,4vw,48px);background:linear-gradient(0deg,rgba(var(--scrim),.88),rgba(var(--scrim),0))">
+        <p style="margin:0 0 8px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">03 — Swarn</p>
+        <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1">Gold, worn on ordinary days</h3>
+        <p style="margin:0;max-width:44ch;color:var(--muted)">Solid 22-carat bangles, chains and jhumkas, forged without solder where the design allows.</p>
+      </div>
+    </article>
+  </div>
+  </div>
+</section>
+
+<section id="craft" aria-label="Craftsmanship" style="position:relative;border-top:1px solid var(--hair);padding:clamp(60px,10vh,120px) clamp(18px,4vw,56px)">
+  <div data-two="1" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,90px);align-items:start">
+    <div data-sticky="1" style="position:sticky;top:18vh">
+      <p style="margin:0 0 26px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Craftsmanship</p>
+      <div style="display:flex;flex-direction:column;gap:clamp(48px,14vh,120px);padding-bottom:10vh">
+        <div data-step="1" style="opacity:.28;transition:opacity .6s var(--ease)">
+          <h3 style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.6vw,52px);line-height:1.05">Naksha</h3>
+          <p style="margin:0;max-width:42ch;color:var(--muted)">Every commission is drawn at full size on tracing paper before any metal is cut. Nothing is modelled on a screen.</p>
+        </div>
+        <div data-step="1" style="opacity:.28;transition:opacity .6s var(--ease)">
+          <h3 style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.6vw,52px);line-height:1.05">Dhalai</h3>
+          <p style="margin:0;max-width:42ch;color:var(--muted)">Gold is melted and alloyed to the shop's own formula, then rolled, annealed and beaten over three to five days.</p>
+        </div>
+        <div data-step="1" style="opacity:.28;transition:opacity .6s var(--ease)">
+          <h3 style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.6vw,52px);line-height:1.05">Jadai</h3>
+          <p style="margin:0;max-width:42ch;color:var(--muted)">One jadiya carries a piece from the first stone to the last, seating each by hand under a loupe.</p>
+        </div>
+        <div data-step="1" style="opacity:.28;transition:opacity .6s var(--ease)">
+          <h3 style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.6vw,52px);line-height:1.05">Ghisai</h3>
+          <p style="margin:0;max-width:42ch;color:var(--muted)">Eleven days of polishing on wheels of decreasing grade, finished with a cloth and rouge worked by hand.</p>
+        </div>
+      </div>
+    </div>
+    <div data-craft-media="1" style="position:sticky;top:12vh;height:76svh;overflow:hidden;background:var(--well)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A gold necklace laid out on a table before finishing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A gold ring set with a blue stone resting on black cloth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A gold necklace and earring set shown in a display case" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Finished gold and silver beaded bracelets" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
+    </div>
+  </div>
+</section>
+
+<section id="materials" aria-label="Materials" style="position:relative;border-top:1px solid var(--hair);padding:clamp(60px,10vh,120px) clamp(18px,4vw,56px)">
+  <div data-two="1" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,90px);align-items:center">
+    <div>
+      <p style="margin:0 0 20px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Materials</p>
+      <h2 style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,68px);line-height:1.02">Three golds, one hand</h2>
+      <p style="margin:0 0 34px;max-width:44ch;color:var(--muted)">Every design is offered in all three alloys. Select one to see the piece as it would leave the workshop.</p>
+      <div role="group" aria-label="Choose a metal" style="display:flex;flex-wrap:wrap;gap:14px">
+        <button type="button" data-metal="yellow" aria-pressed="true" style="display:flex;align-items:center;gap:12px;min-height:48px;padding:12px 20px;background:var(--sel);border:1px solid var(--gold);cursor:pointer;transition:border-color .5s var(--ease),background-color .5s var(--ease)">
+          <span aria-hidden="true" style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#E8D9A0,#C9A227)"></span>
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Yellow gold</span>
+        </button>
+        <button type="button" data-metal="white" aria-pressed="false" style="display:flex;align-items:center;gap:12px;min-height:48px;padding:12px 20px;background:transparent;border:1px solid var(--hair);cursor:pointer;transition:border-color .5s var(--ease),background-color .5s var(--ease)">
+          <span aria-hidden="true" style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#F3EFE6,#A9A9A4)"></span>
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">White gold</span>
+        </button>
+        <button type="button" data-metal="rose" aria-pressed="false" style="display:flex;align-items:center;gap:12px;min-height:48px;padding:12px 20px;background:transparent;border:1px solid var(--hair);cursor:pointer;transition:border-color .5s var(--ease),background-color .5s var(--ease)">
+          <span aria-hidden="true" style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#E8C4B0,#C08A6E)"></span>
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Rose gold</span>
+        </button>
+      </div>
+      <p data-metal-note="1" aria-live="polite" style="margin:26px 0 0;font-size:13px;letter-spacing:.06em;color:var(--champagne)">22ct yellow — 91.6% fine gold, copper and silver balance.</p>
+    </div>
+    <figure style="margin:0;position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--well)">
+      <img data-metal-img="1" loading="lazy" src="https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Hand-finished gold rings resting in a jeweller's case" style="width:100%;height:100%;object-fit:cover;transition:filter .7s var(--ease)">
+    </figure>
+  </div>
+</section>
+
+<section id="quote" aria-label="Editorial" style="border-top:1px solid var(--hair);padding:clamp(80px,18vh,200px) clamp(18px,4vw,56px)">
+  <blockquote data-quote="1" style="margin:0 auto;max-width:22ch;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,7.6vw,110px);line-height:1.04;letter-spacing:-.01em">A jewel should outlive the argument for buying it.</blockquote>
+  <p style="margin:clamp(32px,6vh,64px) auto 0;text-align:center;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Vikram Saubhagya, fourth-generation custodian</p>
+</section>
+
+<section id="appointment" aria-label="Book an appointment" style="border-top:1px solid var(--hair);padding:clamp(60px,10vh,120px) clamp(18px,4vw,56px)">
+  <div data-two="1" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:start">
+    <div>
+      <p style="margin:0 0 20px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Private viewing</p>
+      <h2 style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,68px);line-height:1.02">Come and hold the work</h2>
+      <p style="margin:0;max-width:42ch;color:var(--muted)">Viewings are held by appointment in Jaipur, Mumbai and Hyderabad, one family at a time, for ninety minutes. There is no obligation to commission.</p>
+    </div>
+    <form data-form="1" novalidate style="display:flex;flex-direction:column;gap:30px">
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">Full name</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Your name" style="background:transparent;border:0;border-bottom:1px solid var(--hair);padding:10px 0;transition:border-color .5s var(--ease)">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">Email</span>
+        <input type="email" name="email" autocomplete="email" placeholder="name@domain.com" style="background:transparent;border:0;border-bottom:1px solid var(--hair);padding:10px 0;transition:border-color .5s var(--ease)">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">Showroom</span>
+        <select name="atelier" style="background:transparent;border:0;border-bottom:1px solid var(--hair);padding:10px 0;color:var(--ivory)">
+          <option style="background:var(--obsidian);color:var(--ivory)">Jaipur</option>
+          <option style="background:var(--obsidian);color:var(--ivory)">Mumbai</option>
+          <option style="background:var(--obsidian);color:var(--ivory)">Hyderabad</option>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">What are you looking for?</span>
+        <textarea name="note" rows="3" placeholder="A brief note" style="background:transparent;border:0;border-bottom:1px solid var(--hair);padding:10px 0;resize:vertical"></textarea>
+      </label>
+      <button type="submit" style="align-self:flex-start;margin-top:6px;min-height:52px;padding:16px 34px;background:transparent;border:1px solid var(--gold);color:var(--champagne);font-size:12px;letter-spacing:.28em;text-transform:uppercase;cursor:pointer;transition:background-color .5s var(--ease),color .5s var(--ease)" style-hover="background:var(--gold);color:var(--obsidian)">Request appointment</button>
+      <p data-form-note="1" role="status" style="margin:0;min-height:20px;font-size:14px;color:var(--champagne);opacity:0;transition:opacity .5s var(--ease)">Thank you. Our private client office will write within two working days.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer style="border-top:1px solid var(--hair);padding:clamp(40px,7vh,72px) clamp(18px,4vw,56px) 40px">
+  <div data-two="1" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:start">
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,40px);font-weight:300;line-height:1.1">Saubhagya Jewellers<br><span style="color:var(--muted);font-size:15px;font-family:Inter,sans-serif">Johari Bazaar, Jaipur · Kala Ghoda, Mumbai</span></p>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,64px);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">
+      <a data-link="1" data-nav-link="collections" href="#collections">Collections</a>
+      <a data-link="1" href="#craft">Karkhana</a>
+      <a data-link="1" href="#appointment">Contact</a>
+      <a data-link="1" href="#hero">Top</a>
+    </div>
+  </div>
+  <p style="max-width:1400px;margin:clamp(32px,6vh,64px) auto 0;padding-top:20px;border-top:1px solid var(--hair);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)">© 2026 Saubhagya Jewellers — BIS hallmarked, every piece registered</p>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Palette&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C9A227&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C9A227&quot;,&quot;#B08D57&quot;,&quot;#D8B24C&quot;,&quot;#9C8B5E&quot;],&quot;section&quot;:&quot;Palette&quot;},&quot;accentLight&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E8D9A0&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#E8D9A0&quot;,&quot;#F0E4BE&quot;,&quot;#D9C89A&quot;],&quot;section&quot;:&quot;Palette&quot;},&quot;motionScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.6,&quot;max&quot;:1.8,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;scrollEase&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.1,&quot;min&quot;:0.6,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    window.__sjActive = this;
+    document.documentElement.lang = 'en';
+    this.root = document.body;
+    this.metal = 'yellow';
+    let saved = null;
+    try { saved = localStorage.getItem('sj-mode'); } catch (e) {}
+    this.setMode(this.props.mode || saved || 'dark');
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.applyAccent();
+    this.bindStatic();
+    this.waitForLibs(0);
+  }
+
+  componentDidUpdate(prev) {
+    if (prev && prev.mode !== this.props.mode && this.props.mode) this.setMode(this.props.mode);
+    else this.applyAccent();
+  }
+
+  componentWillUnmount() {
+    this.dead = true;
+    if (this.libTimer) clearTimeout(this.libTimer);
+    if (this.watchdog) clearTimeout(this.watchdog);
+    if (window.__sjActive !== this) return; // a newer instance owns the motion now
+    if (this.lenis) this.lenis.destroy();
+    (this.triggers || []).forEach(t => { try { t.kill(); } catch (e) {} });
+    if (this.mouseHandler) window.removeEventListener('mousemove', this.mouseHandler);
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  applyAccent() {
+    const r = document.documentElement.style;
+    if (this.mode === 'light') { r.removeProperty('--gold'); r.removeProperty('--champagne'); return; }
+    r.setProperty('--gold', this.props.accent || '#C9A227');
+    r.setProperty('--champagne', this.props.accentLight || '#E8D9A0');
+  }
+
+  setMode(mode) {
+    this.mode = mode === 'light' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-mode', this.mode);
+    try { localStorage.setItem('sj-mode', this.mode); } catch (e) {}
+    const btn = document.querySelector('[data-mode-toggle]');
+    const label = document.querySelector('[data-mode-label]');
+    if (btn) btn.setAttribute('aria-pressed', this.mode === 'light' ? 'true' : 'false');
+    if (label) label.textContent = this.mode === 'light' ? 'Dark' : 'Light';
+    this.applyAccent();
+  }
+
+  q(sel) { return Array.from(document.querySelectorAll(sel)); }
+
+  waitForLibs(tries) {
+    if (this.dead) return;
+    if (window.gsap && window.ScrollTrigger) {
+      try { this.init(); } catch (err) { window.__initErr = (err && err.stack) || String(err); console.error('Saubhagya motion init failed:', err); }
+      return;
+    }
+    if (tries > 120) return;
+    this.libTimer = setTimeout(() => this.waitForLibs(tries + 1), 60);
+  }
+
+  bindStatic() {
+    // Metal swatches — hover + focus + click, filter recolour
+    const filters = {
+      yellow: 'saturate(1.05) sepia(0.12) hue-rotate(-6deg) brightness(1.02)',
+      white: 'saturate(0.18) brightness(1.16) contrast(1.02)',
+      rose: 'sepia(0.34) saturate(1.25) hue-rotate(-18deg) brightness(1.03)'
+    };
+    const notes = {
+      yellow: '22ct yellow — 91.6% fine gold, copper and silver balance.',
+      white: '18ct white — palladium alloy, rhodium finished by hand.',
+      rose: '18ct rose — raised copper content, warmed over three anneals.'
+    };
+    const img = document.querySelector('[data-metal-img]');
+    const note = document.querySelector('[data-metal-note]');
+    const btns = this.q('[data-metal]');
+    // preview = what the pointer is over; selected = what the user committed to
+    const paint = (key) => {
+      if (img) img.style.filter = filters[key];
+      if (note) note.textContent = notes[key];
+      btns.forEach(b => {
+        const sel = b.dataset.metal === this.metal;
+        const shown = b.dataset.metal === key;
+        b.setAttribute('aria-pressed', sel ? 'true' : 'false');
+        b.style.borderColor = (sel || shown) ? 'var(--gold)' : 'var(--hair)';
+        b.style.backgroundColor = sel ? 'rgba(201,162,39,.12)' : 'transparent';
+      });
+    };
+    btns.forEach(b => {
+      const key = b.dataset.metal;
+      b.addEventListener('mouseenter', () => paint(key));
+      b.addEventListener('mouseleave', () => paint(this.metal));
+      b.addEventListener('focus', () => paint(key));
+      b.addEventListener('blur', () => paint(this.metal));
+      b.addEventListener('click', () => { this.metal = key; paint(key); });
+    });
+    paint(this.metal);
+
+    // Dark / light
+    const modeBtn = document.querySelector('[data-mode-toggle]');
+    if (modeBtn) modeBtn.addEventListener('click', () => this.setMode(this.mode === 'light' ? 'dark' : 'light'));
+
+    // Mobile menu
+    const toggle = document.querySelector('[data-menu-toggle]');
+    const panel = document.querySelector('[data-mobile-nav]');
+    const closeBtn = document.querySelector('[data-menu-close]');
+    const setMenu = (open) => {
+      if (!panel || !toggle) return;
+      panel.setAttribute('data-open', open ? '1' : '0');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (this.lenis) open ? this.lenis.stop() : this.lenis.start();
+      if (open) { const f = panel.querySelector('a'); if (f) f.focus(); }
+      else toggle.focus();
+    };
+    if (toggle) toggle.addEventListener('click', () => setMenu(panel.getAttribute('data-open') !== '1'));
+    if (closeBtn) closeBtn.addEventListener('click', () => setMenu(false));
+    this.q('[data-mobile-link]').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+    // Underline-only inputs: gold hairline on focus
+    this.q('#appointment input, #appointment textarea, #appointment select').forEach(el => {
+      el.addEventListener('focus', () => { el.style.borderBottomColor = 'var(--gold)'; });
+      el.addEventListener('blur', () => { el.style.borderBottomColor = 'var(--hair)'; });
+    });
+
+    const form = document.querySelector('[data-form]');
+    if (form) form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const n = document.querySelector('[data-form-note]');
+      const name = form.elements.name, email = form.elements.email;
+      const valid = (el, ok) => {
+        el.style.borderBottomColor = ok ? 'var(--hair)' : '#C96A4A';
+        return ok;
+      };
+      const okName = valid(name, name.value.trim().length > 1);
+      const okEmail = valid(email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()));
+      if (!n) return;
+      if (!okName || !okEmail) {
+        n.textContent = !okName
+          ? 'Please tell us your name so we can hold the appointment.'
+          : 'That email address does not look complete. Please check it.';
+        n.style.color = '#E0A183';
+        n.style.opacity = '1';
+        (!okName ? name : email).focus();
+        return;
+      }
+      n.textContent = 'Thank you. Our private client desk will write within two working days.';
+      n.style.color = 'var(--champagne)';
+      n.style.opacity = '1';
+    });
+
+    // Anchor navigation through Lenis when available
+    this.q('a[href^="#"]').forEach(a => a.addEventListener('click', (e) => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      if (this.lenis) this.lenis.scrollTo(t, { offset: -10, duration: 1.2 });
+      else t.scrollIntoView === undefined ? null : window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+    }));
+  }
+
+  splitQuote() {
+    const el = document.querySelector('[data-quote]');
+    if (!el) return [];
+    if (el.dataset.split) return Array.from(el.querySelectorAll('span span'));
+    const text = el.textContent;
+    el.dataset.split = '1';
+    el.textContent = '';
+    const chars = [];
+    text.split(/(\s+)/).forEach(chunk => {
+      if (/^\s+$/.test(chunk)) { el.appendChild(document.createTextNode(' ')); return; }
+      const word = document.createElement('span');
+      word.style.display = 'inline-block';
+      word.style.whiteSpace = 'nowrap';
+      chunk.split('').forEach(c => {
+        const s = document.createElement('span');
+        s.textContent = c;
+        s.style.display = 'inline-block';
+        s.style.opacity = '1';
+        word.appendChild(s);
+        chars.push(s);
+      });
+      el.appendChild(word);
+    });
+    return chars;
+  }
+
+  init() {
+    const gsap = window.gsap, ST = window.ScrollTrigger;
+    gsap.registerPlugin(ST);
+    // Idempotent: a remount or watchdog re-run must not stack a second set of pins
+    ST.getAll().forEach(t => { try { t.kill(true); } catch (e) {} });
+    if (this.mouseHandler) window.removeEventListener('mousemove', this.mouseHandler);
+    const oldTrack = document.querySelector('[data-track]');
+    if (oldTrack) gsap.set(oldTrack, { clearProps: 'transform' });
+    const EASE = 'expo.out';
+    const p = this.props || {};
+    const speed = p.motionScale == null ? 1 : p.motionScale;
+    const chars = this.splitQuote();
+    this.triggers = [];
+
+    // Lenis smooth scroll
+    if (window.Lenis && !this.reduced) {
+      this.lenis = new window.Lenis({ duration: p.scrollEase == null ? 1.1 : p.scrollEase, smoothWheel: true });
+      this.lenis.on('scroll', ST.update);
+      const raf = (t) => { this.lenis.raf(t); this.raf = requestAnimationFrame(raf); };
+      this.raf = requestAnimationFrame(raf);
+    }
+
+    const heroImg = document.querySelector('[data-hero-img]');
+    const words = this.q('[data-hero-word]');
+    const eyebrow = document.querySelector('[data-hero-eyebrow]');
+    const sub = document.querySelector('[data-hero-sub]');
+
+    if (this.reduced) {
+      this.q('[data-panel-img]').forEach(i => { i.style.transform = 'scale(1)'; });
+      this.q('[data-step]').forEach((s, i) => { s.style.opacity = i === 0 ? '1' : '.4'; });
+      return;
+    }
+
+    // Hero entrance — hidden state is set here, so a JS failure leaves the hero visible
+    const tl = gsap.timeline({ defaults: { ease: EASE } });
+    if (eyebrow) tl.fromTo(eyebrow, { opacity: 0 }, { opacity: 1, duration: 0.9 * speed }, 0.1);
+    tl.fromTo(words, { yPercent: 110 }, { yPercent: 0, duration: 0.9 * speed, stagger: 0.08 }, 0.2);
+    if (heroImg) tl.fromTo(heroImg,
+      { clipPath: 'inset(0 100% 0 0)', scale: 1.06 },
+      { clipPath: 'inset(0 0% 0 0)', scale: 1, duration: 1.5 * speed }, 0.35);
+    if (sub) tl.fromTo(sub, { opacity: 0 }, { opacity: 1, duration: 0.8 * speed }, 0.9);
+    if (chars.length) gsap.set(chars, { opacity: 0.08 });
+
+    // Mouse parallax
+    const scene = document.querySelector('[data-parallax-scene]');
+    const layers = this.q('[data-parallax]');
+    if (scene && layers.length) {
+      this.mouseHandler = (e) => {
+        const cx = (e.clientX / window.innerWidth - 0.5);
+        const cy = (e.clientY / window.innerHeight - 0.5);
+        layers.forEach(l => {
+          const d = parseFloat(l.dataset.parallax) || 0.03;
+          gsap.to(l, { x: -cx * window.innerWidth * d, y: -cy * window.innerHeight * d, duration: 0.9, ease: 'power3.out', overwrite: 'auto' });
+        });
+        gsap.to(scene.querySelector('h1'), { x: -cx * 22, y: -cy * 12, duration: 1.1, ease: 'power3.out', overwrite: 'auto' });
+      };
+      window.addEventListener('mousemove', this.mouseHandler, { passive: true });
+    }
+
+    // Scrub reveal: rotate + scale the ring, cross-fade captions
+    const scrubImg = document.querySelector('[data-scrub-img]');
+    const caps = this.q('[data-caption]');
+    const scrubSection = document.querySelector('[data-scrub-section]');
+    if (scrubSection && scrubImg) {
+      const st = gsap.timeline({
+        scrollTrigger: { trigger: scrubSection, start: 'top top', end: 'bottom bottom', scrub: 0.8 }
+      });
+      st.fromTo(scrubImg, { rotate: -8, scale: 1.14 }, { rotate: 8, scale: 1, ease: 'none', duration: 3 }, 0);
+      caps.forEach((c, i) => {
+        if (i === 0) { st.to(c, { opacity: 0, duration: 0.4 }, 0.9); return; }
+        st.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.4 }, i * 0.95);
+        if (i < caps.length - 1) st.to(c, { opacity: 0, duration: 0.4 }, i * 0.95 + 0.9);
+      });
+    }
+
+    // Collections: horizontal pin (desktop only)
+    const track = document.querySelector('[data-track]');
+    const collections = document.querySelector('[data-collections]');
+    const panelImgs = this.q('[data-panel-img]');
+    const wide = window.matchMedia('(min-width:901px)').matches;
+    const bar = document.querySelector('[data-progress-bar]');
+    const idx = document.querySelector('[data-coll-index]');
+    if (track && collections && wide) {
+      const distance = () => track.scrollWidth - window.innerWidth;
+      gsap.to(track, {
+        x: () => -distance(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: collections, start: 'top top', end: 'bottom bottom',
+          scrub: 0.8, invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (bar) bar.style.transform = 'scaleX(' + self.progress + ')';
+            if (idx) {
+              const n = Math.min(3, Math.floor(self.progress * 3) + 1);
+              const label = '0' + n + ' — 03';
+              if (idx.textContent !== label) idx.textContent = label;
+            }
+          }
+        }
+      });
+      panelImgs.forEach(img => {
+        gsap.to(img, {
+          scale: 1, ease: 'none',
+          scrollTrigger: {
+            trigger: img.parentElement, containerAnimation: gsap.getTweensOf(track)[0],
+            start: 'left right', end: 'center center', scrub: true
+          }
+        });
+      });
+    } else {
+      panelImgs.forEach(img => {
+        gsap.fromTo(img, { scale: 1.2 }, {
+          scale: 1, ease: 'none',
+          scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'center center', scrub: true }
+        });
+      });
+    }
+
+    // Craftsmanship scrollytelling
+    const steps = this.q('[data-step]');
+    const craftImgs = this.q('[data-craft-img]');
+    steps.forEach((step, i) => {
+      ST.create({
+        trigger: step, start: 'top 62%', end: 'bottom 42%',
+        onToggle: (self) => {
+          if (!self.isActive) return;
+          steps.forEach((s, j) => { s.style.opacity = j === i ? '1' : '0.28'; });
+          craftImgs.forEach((im, j) => { im.style.opacity = j === i ? '1' : '0'; });
+        }
+      });
+    });
+
+    // Nav: active section
+    const navLinks = this.q('[data-nav-link]');
+    navLinks.forEach(link => {
+      const sec = document.getElementById(link.dataset.navLink);
+      if (!sec) return;
+      ST.create({
+        trigger: sec, start: 'top 40%', end: 'bottom 40%',
+        onToggle: (self) => {
+          if (!self.isActive) return;
+          navLinks.forEach(l => { l.style.color = l === link ? 'var(--champagne)' : ''; });
+        }
+      });
+    });
+
+    // Quote: characters fading in
+    if (chars.length) {
+      gsap.to(chars, {
+        opacity: 1, ease: 'none', stagger: 0.6,
+        scrollTrigger: { trigger: '#quote', start: 'top 78%', end: 'bottom 62%', scrub: 0.6 }
+      });
+    }
+
+    // Section reveals — opacity + small rise only
+    this.q('#materials h2, #materials p, #appointment h2, #appointment p, #collections h2, footer p').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 18 }, {
+        opacity: 1, y: 0, duration: 0.8 * speed, ease: EASE,
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    this.triggers = ST.getAll();
+    ST.refresh();
+    window.addEventListener('resize', () => ST.refresh());
+    // Watchdog: if a remount wiped the triggers, rebuild them
+    this.watchdog = setTimeout(() => {
+      if (this.dead || this.reduced) return;
+      if (window.ScrollTrigger.getAll().length === 0) {
+        try { this.init(); } catch (e) { console.error('Saubhagya re-init failed:', e); }
+      }
+    }, 500);
+  }
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

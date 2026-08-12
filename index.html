@@ -8,7 +8,8 @@
 <body>
 <x-dc>
 <helmet>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#151010">
 <title>Saubhagya Jewellers — Fine Jewellery, Jaipur</title>
 <meta name="description" content="Saubhagya Jewellers, Jaipur. Kundan, polki and 22-carat gold set by hand. Private viewings by appointment in Jaipur, Mumbai and Hyderabad.">
 <meta property="og:title" content="Saubhagya Jewellers — Fine Jewellery, Jaipur">
@@ -26,9 +27,15 @@
 :root[data-mode="light"]{--obsidian:#EFDCD2;--gold:#8A6A14;--champagne:#6F5410;--ivory:#16130E;--muted:rgba(22,19,14,.62);--hair:rgba(138,106,20,.32);--scrim:239,220,210;--well:#E3C9BC;--faint:rgba(22,19,14,.42);--sel:rgba(138,106,20,.12);--sheen:rgba(255,255,255,.55)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--obsidian);color:var(--ivory);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;transition:background-color .6s var(--ease),color .6s var(--ease)}
+body{margin:0;background:var(--obsidian);color:var(--ivory);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;transition:background-color .6s var(--ease),color .6s var(--ease);max-width:100%;overflow-x:clip}
+html[data-menu-open="1"],html[data-menu-open="1"] body{overflow:hidden}
 img{display:block;max-width:100%}
 a{color:var(--ivory);text-decoration:none}
+/* <main> computes to the initial black rather than inheriting body's ivory, so
+   anything inside it without its own colour — headings, the metal swatch labels —
+   rendered black on the obsidian ground. Restate it here and at the headings. */
+main{color:var(--ivory)}
+h1,h2,h3,h4{color:var(--ivory)}
 a:hover{color:var(--champagne)}
 button,input,textarea{font:inherit;color:inherit}
 :focus-visible{outline:1px solid var(--gold);outline-offset:4px}
@@ -52,11 +59,54 @@ button,input,textarea{font:inherit;color:inherit}
  [data-panel]{width:100% !important;height:auto !important;min-height:78svh}
  [data-craft-media]{position:relative !important;height:62svh !important;top:auto !important}
  [data-sticky]{position:relative !important;top:auto !important;height:auto !important}
- [data-nav]{display:none !important}
  [data-scrub-stage]{grid-template-columns:1fr !important;position:static !important;min-height:0 !important}
  [data-scrub-section]{height:auto !important;padding-top:clamp(60px,10vh,120px) !important;padding-bottom:clamp(60px,10vh,120px) !important}
  [data-collections]{height:auto !important}
  [data-coll-sticky]{position:static !important;height:auto !important;display:block !important;overflow:visible !important}
+ /* The three captions are cross-faded by a pinned scrub on desktop. With the pin
+    gone there is nothing to scrub, so stack them in flow — otherwise two of the
+    three stay at opacity 0 and the section reads as one paragraph. */
+ [data-caption]{position:relative !important;inset:auto !important;opacity:1 !important}
+ [data-caption]+[data-caption]{margin-top:clamp(28px,5vh,44px);padding-top:clamp(28px,5vh,44px);border-top:1px solid var(--hair)}
+ [data-caption-wrap]{min-height:0 !important}
+ /* Same reason: the karkhana steps are dimmed to .28 and lit one at a time by the
+    sticky scrollytell. Unpinned, every step must be readable. */
+ [data-step]{opacity:1 !important}
+ [data-craft-media] img+img{display:none}
+ /* A portrait crop puts the bride's jewellery right under the caption, and the
+    desktop scrim is too shallow to hold the text off it. Deepen the fade. */
+ [data-panel]>div{padding-top:clamp(56px,14vw,96px) !important;background:linear-gradient(0deg,rgba(var(--scrim),.95) 0%,rgba(var(--scrim),.88) 42%,rgba(var(--scrim),.6) 72%,rgba(var(--scrim),0) 100%) !important}
+ /* The fixed header scrolls over full-bleed photographs; on a phone it is only
+    ~58px tall, so the gradient needs to be stronger to keep the logo readable. */
+ header{background:linear-gradient(180deg,rgba(var(--scrim),.97) 0%,rgba(var(--scrim),.85) 62%,rgba(var(--scrim),0) 100%) !important}
+}
+@media (max-width:640px){
+ body{font-size:15.5px}
+ /* flex:0 0 auto is set inline, so the logo cannot shrink and pushes the two
+    buttons off a 360px screen. Let it shrink and wrap to two lines instead. */
+ [data-logo]{font-size:13px !important;letter-spacing:.1em !important;white-space:normal !important;flex:1 1 auto !important;min-width:0;line-height:1.15}
+ header{gap:10px !important;padding:12px 16px !important}
+ [data-mode-label]{display:none}
+ [data-mode-toggle]{padding:10px 12px !important;gap:0 !important}
+ [data-menu-toggle]{padding:10px 12px !important;font-size:11px !important}
+ [data-mobile-nav]{gap:22px !important;justify-content:center !important;overflow-y:auto;padding:96px clamp(20px,7vw,40px) 40px !important}
+ #hero{padding-top:88px !important}
+ #hero h1{font-size:clamp(36px,10.5vw,58px) !important}
+ [data-hero-foot]{flex-direction:column !important;align-items:flex-start !important;gap:6px !important;line-height:1.5}
+ [data-hero-foot] span{letter-spacing:.18em}
+ #quote blockquote{max-width:none !important;font-size:clamp(32px,9vw,52px) !important}
+ [data-panel]{min-height:62svh !important}
+ [data-craft-media]{height:48svh !important}
+ /* iOS zooms the page in on any focused field under 16px. */
+ #appointment input,#appointment textarea,#appointment select{font-size:16px !important}
+ #appointment form{gap:24px !important}
+ #appointment button[type="submit"]{align-self:stretch !important;text-align:center}
+ footer [data-two]+p,footer{overflow-wrap:anywhere}
+}
+/* Touch devices get no hover, so the underline sweep and the metal preview never
+   fire — the committed/selected state has to carry the whole affordance. */
+@media (hover:none){
+ [data-link]::after{display:none}
 }
 @media (prefers-reduced-motion:reduce){
  *{animation:none !important;transition-duration:.01ms !important}
@@ -69,7 +119,7 @@ button,input,textarea{font:inherit;color:inherit}
 <a data-skip="1" href="#main">Skip to content</a>
 
 <header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:clamp(12px,2vw,36px);padding:18px clamp(18px,4vw,56px);background:linear-gradient(180deg,rgba(var(--scrim),.92),rgba(var(--scrim),0))">
-  <a href="#hero" style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.4vw,19px);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;flex:0 0 auto;color:var(--ivory)">Saubhagya Jewellers</a>
+  <a data-logo="1" href="#hero" style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.4vw,19px);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;flex:0 0 auto;color:var(--ivory)">Saubhagya Jewellers</a>
   <nav data-nav="1" aria-label="Primary" style="display:flex;gap:clamp(18px,3vw,44px);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">
     <a data-link="1" data-nav-link="collections" href="#collections">Collections</a>
     <a data-link="1" data-nav-link="craft" href="#craft">Craftsmanship</a>
@@ -77,7 +127,7 @@ button,input,textarea{font:inherit;color:inherit}
     <a data-link="1" data-nav-link="appointment" href="#appointment">Appointment</a>
   </nav>
   <a data-link="1" data-cta-link="1" href="#appointment" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;color:var(--champagne)">Book a viewing</a>
-  <button type="button" data-mode-toggle="1" aria-pressed="false" style="display:flex;flex:0 0 auto;align-items:center;gap:10px;min-height:44px;padding:10px 16px;white-space:nowrap;background:transparent;border:1px solid var(--hair);color:var(--ivory);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:border-color .5s var(--ease),color .5s var(--ease)">
+  <button type="button" data-mode-toggle="1" aria-pressed="false" aria-label="Switch to light palette" style="display:flex;flex:0 0 auto;align-items:center;gap:10px;min-height:44px;padding:10px 16px;white-space:nowrap;background:transparent;border:1px solid var(--hair);color:var(--ivory);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:border-color .5s var(--ease),color .5s var(--ease)">
     <span aria-hidden="true" data-mode-dot="1" style="width:12px;height:12px;border-radius:50%;background:var(--gold);transition:background-color .5s var(--ease)"></span>
     <span data-mode-label="1">Light</span>
   </button>
@@ -104,14 +154,14 @@ button,input,textarea{font:inherit;color:inherit}
     </h1>
 
     <figure data-parallax="0.03" style="position:relative;margin:0;width:min(560px,84vw);aspect-ratio:4/3;overflow:hidden">
-      <img data-hero-img="1" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A hand-set gold necklace with ruby beads, photographed on a dark ground" style="width:100%;height:100%;object-fit:cover">
+      <img data-hero-img="1" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A hand-set gold necklace with ruby beads, photographed on a dark ground" style="width:100%;height:100%;object-fit:cover">
       <span aria-hidden="true" style="position:absolute;inset:-20% -40%;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,0) 42%,var(--sheen) 50%,rgba(255,255,255,0) 58%);animation:sweep 6s var(--ease) infinite;will-change:transform"></span>
     </figure>
 
     <p data-hero-sub="1" style="margin:0;max-width:46ch;color:var(--muted)">Kundan, polki and 22-carat gold, set by hand in our Jaipur workshop. Fewer than four hundred pieces leave the karkhana each year.</p>
   </div>
 
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid var(--hair);padding-top:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">
+  <div data-hero-foot="1" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid var(--hair);padding-top:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">
     <span>Scroll to enter</span>
     <span>Jaipur · Mumbai · Hyderabad</span>
   </div>
@@ -120,9 +170,9 @@ button,input,textarea{font:inherit;color:inherit}
 <section id="reveal" aria-label="The jadau earring, examined" data-scrub-section="1" style="position:relative;height:250svh;padding:0 clamp(18px,4vw,56px);border-top:1px solid var(--hair)">
   <div data-scrub-stage="1" style="position:sticky;top:0;width:100%;max-width:1400px;margin:0 auto;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,90px);align-items:center;align-content:center;padding:clamp(70px,12vh,140px) 0">
     <figure style="position:relative;margin:0;aspect-ratio:1/1;overflow:hidden;background:var(--well)">
-      <img data-scrub-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A pair of ornate gold earrings set with stones, photographed against dark grey" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08)">
+      <img data-scrub-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A pair of ornate gold earrings set with stones, photographed against dark grey" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08)">
     </figure>
-    <div style="position:relative;min-height:clamp(220px,34vh,300px)">
+    <div data-caption-wrap="1" style="position:relative;min-height:clamp(220px,34vh,300px)">
       <p style="margin:0 0 28px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Karanphool Jadau — 22ct</p>
       <div style="position:relative">
         <div data-caption="1" style="opacity:1">
@@ -155,7 +205,7 @@ button,input,textarea{font:inherit;color:inherit}
   </div>
   <div data-track="1" style="display:flex;width:max-content;height:70svh;gap:0;will-change:transform">
     <article data-panel="1" style="position:relative;width:88vw;height:100%;overflow:hidden;border-left:1px solid var(--hair)">
-      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="A bride wearing traditional Indian gold jewellery and a necklace set" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
+      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" srcset="https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1756483560049-e7b2208f99a0?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A bride wearing traditional Indian gold jewellery and a necklace set" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
       <div style="position:absolute;inset:auto 0 0 0;padding:clamp(22px,4vw,48px);background:linear-gradient(0deg,rgba(var(--scrim),.88),rgba(var(--scrim),0))">
         <p style="margin:0 0 8px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">01 — Vivaha</p>
         <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1">The bridal set, whole</h3>
@@ -163,7 +213,7 @@ button,input,textarea{font:inherit;color:inherit}
       </div>
     </article>
     <article data-panel="1" style="position:relative;width:88vw;height:100%;overflow:hidden;border-left:1px solid var(--hair)">
-      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="A woman wearing an ornate gold headpiece and traditional jewellery" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
+      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" srcset="https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1600685890506-593fdf55949b?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A woman wearing an ornate gold headpiece and traditional jewellery" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
       <div style="position:absolute;inset:auto 0 0 0;padding:clamp(22px,4vw,48px);background:linear-gradient(0deg,rgba(var(--scrim),.88),rgba(var(--scrim),0))">
         <p style="margin:0 0 8px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">02 — Virasat</p>
         <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1">Temple work, redrawn</h3>
@@ -171,7 +221,7 @@ button,input,textarea{font:inherit;color:inherit}
       </div>
     </article>
     <article data-panel="1" style="position:relative;width:88vw;height:100%;overflow:hidden;border-left:1px solid var(--hair)">
-      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="A woman in a green sari wearing everyday gold jewellery" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
+      <img data-panel-img="1" loading="lazy" src="https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" srcset="https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1688382654723-a7366006519b?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A woman in a green sari wearing everyday gold jewellery" style="width:100%;height:100%;object-fit:cover;transform:scale(1.2);will-change:transform">
       <div style="position:absolute;inset:auto 0 0 0;padding:clamp(22px,4vw,48px);background:linear-gradient(0deg,rgba(var(--scrim),.88),rgba(var(--scrim),0))">
         <p style="margin:0 0 8px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">03 — Swarn</p>
         <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1">Gold, worn on ordinary days</h3>
@@ -206,10 +256,10 @@ button,input,textarea{font:inherit;color:inherit}
       </div>
     </div>
     <div data-craft-media="1" style="position:sticky;top:12vh;height:76svh;overflow:hidden;background:var(--well)">
-      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A gold necklace laid out on a table before finishing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .7s var(--ease)">
-      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A gold ring set with a blue stone resting on black cloth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
-      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A gold necklace and earring set shown in a display case" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
-      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Finished gold and silver beaded bracelets" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1695050049047-54e27a908898?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A gold necklace laid out on a table before finishing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1626784214536-d859187e0bd0?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A gold ring set with a blue stone resting on black cloth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1640183298005-3a4497cc6a37?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="A gold necklace and earring set shown in a display case" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
+      <img data-craft-img="1" loading="lazy" src="https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1626784215013-13322cb0e471?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="Finished gold and silver beaded bracelets" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)">
     </div>
   </div>
 </section>
@@ -237,7 +287,7 @@ button,input,textarea{font:inherit;color:inherit}
       <p data-metal-note="1" aria-live="polite" style="margin:26px 0 0;font-size:13px;letter-spacing:.06em;color:var(--champagne)">22ct yellow — 91.6% fine gold, copper and silver balance.</p>
     </div>
     <figure style="margin:0;position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--well)">
-      <img data-metal-img="1" loading="lazy" src="https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Hand-finished gold rings resting in a jeweller's case" style="width:100%;height:100%;object-fit:cover;transition:filter .7s var(--ease)">
+      <img data-metal-img="1" loading="lazy" src="https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" srcset="https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=1080&amp;q=80 1080w, https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="Hand-finished gold rings resting in a jeweller's case" style="width:100%;height:100%;object-fit:cover;transition:filter .7s var(--ease)">
     </figure>
   </div>
 </section>
@@ -324,6 +374,7 @@ class Component extends DCLogic {
     this.dead = true;
     if (this.libTimer) clearTimeout(this.libTimer);
     if (this.watchdog) clearTimeout(this.watchdog);
+    if (this.resizeTimer) clearTimeout(this.resizeTimer);
     if (window.__sjActive !== this) return; // a newer instance owns the motion now
     if (this.lenis) this.lenis.destroy();
     (this.triggers || []).forEach(t => { try { t.kill(); } catch (e) {} });
@@ -342,9 +393,14 @@ class Component extends DCLogic {
     this.mode = mode === 'light' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-mode', this.mode);
     try { localStorage.setItem('sj-mode', this.mode); } catch (e) {}
+    const tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.setAttribute('content', this.mode === 'light' ? '#EFDCD2' : '#151010');
     const btn = document.querySelector('[data-mode-toggle]');
     const label = document.querySelector('[data-mode-label]');
-    if (btn) btn.setAttribute('aria-pressed', this.mode === 'light' ? 'true' : 'false');
+    if (btn) {
+      btn.setAttribute('aria-pressed', this.mode === 'light' ? 'true' : 'false');
+      btn.setAttribute('aria-label', 'Switch to ' + (this.mode === 'light' ? 'dark' : 'light') + ' palette');
+    }
     if (label) label.textContent = this.mode === 'light' ? 'Dark' : 'Light';
     this.applyAccent();
   }
@@ -411,6 +467,9 @@ class Component extends DCLogic {
       panel.setAttribute('data-open', open ? '1' : '0');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (this.lenis) open ? this.lenis.stop() : this.lenis.start();
+      // Lenis does not own touch scrolling, so stop() alone leaves the page
+      // scrolling behind the open panel on a phone.
+      document.documentElement.setAttribute('data-menu-open', open ? '1' : '0');
       if (open) { const f = panel.querySelector('a'); if (f) f.focus(); }
       else toggle.focus();
     };
@@ -499,6 +558,7 @@ class Component extends DCLogic {
     const p = this.props || {};
     const speed = p.motionScale == null ? 1 : p.motionScale;
     const chars = this.splitQuote();
+    const wide = window.matchMedia('(min-width:901px)').matches;
     this.triggers = [];
 
     // Lenis smooth scroll
@@ -550,7 +610,7 @@ class Component extends DCLogic {
     const scrubImg = document.querySelector('[data-scrub-img]');
     const caps = this.q('[data-caption]');
     const scrubSection = document.querySelector('[data-scrub-section]');
-    if (scrubSection && scrubImg) {
+    if (scrubSection && scrubImg && wide) {
       const st = gsap.timeline({
         scrollTrigger: { trigger: scrubSection, start: 'top top', end: 'bottom bottom', scrub: 0.8 }
       });
@@ -566,7 +626,6 @@ class Component extends DCLogic {
     const track = document.querySelector('[data-track]');
     const collections = document.querySelector('[data-collections]');
     const panelImgs = this.q('[data-panel-img]');
-    const wide = window.matchMedia('(min-width:901px)').matches;
     const bar = document.querySelector('[data-progress-bar]');
     const idx = document.querySelector('[data-coll-index]');
     if (track && collections && wide) {
@@ -651,7 +710,16 @@ class Component extends DCLogic {
 
     this.triggers = ST.getAll();
     ST.refresh();
-    window.addEventListener('resize', () => ST.refresh());
+    // On a phone, showing/hiding the URL bar fires resize constantly. Refreshing
+    // every pinned trigger on each of those is what makes the scroll feel sticky,
+    // so only react to a real width change, and debounce it.
+    let lastW = window.innerWidth;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      clearTimeout(this.resizeTimer);
+      this.resizeTimer = setTimeout(() => ST.refresh(), 180);
+    });
     // Watchdog: if a remount wiped the triggers, rebuild them
     this.watchdog = setTimeout(() => {
       if (this.dead || this.reduced) return;

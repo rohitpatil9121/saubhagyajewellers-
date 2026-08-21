@@ -5,3 +5,17 @@ coffe shop/
 # Local scratch
 _diag.html
 _wrap.html
+
+# Other projects living in this root; each belongs in its own repo.
+anand-jewellers/
+bokka-immersive/
+bokka-static/
+specs/
+.specify/
+ANAND-JEWELLERS-PROMPT.md
+
+# Tooling / build output
+.claude/
+node_modules/
+.next/
+out/
